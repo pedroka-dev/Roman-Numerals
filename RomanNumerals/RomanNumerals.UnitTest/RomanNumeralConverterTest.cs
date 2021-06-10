@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace RomanNumerals.UnitTest
 {
@@ -213,6 +213,114 @@ namespace RomanNumerals.UnitTest
         {
             int inputNumber = 1120;
             string expectedText = "MCXX";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_IVthousands()
+        {
+            int inputNumber = 4000;
+            string expectedText = "ĪV̄";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_Vthousands()
+        {
+            int inputNumber = 5000;
+            string expectedText = "V̄";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_VIthousands()
+        {
+            int inputNumber = 6000;
+            string expectedText = "V̄Ī";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_VIIthousands()
+        {
+            int inputNumber = 7000;
+            string expectedText = "V̄ĪĪ";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_VIIIthousands()
+        {
+            int inputNumber = 8000;
+            string expectedText = "V̄ĪĪĪ";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_IXthousands()
+        {
+            int inputNumber = 9000;
+            string expectedText = "ĪX̄";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_Xthousands()
+        {
+            int inputNumber = 10000;
+            string expectedText = "X̄";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_IVthousandsAndII()
+        {
+            int inputNumber = 4002;
+            string expectedText = "ĪV̄II";
+
+            RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
+            string outputText = romanConverter.Convert();
+
+            Assert.AreEqual(expectedText, outputText);
+        }
+
+        [TestCase]
+        public void Should_ReturnNumeral_IVthousandsAndX()
+        {
+            int inputNumber = 4010;
+            string expectedText = "ĪV̄X";
 
             RomanNumeralConverter romanConverter = new RomanNumeralConverter(inputNumber);
             string outputText = romanConverter.Convert();

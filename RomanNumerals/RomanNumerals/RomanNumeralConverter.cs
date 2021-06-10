@@ -19,9 +19,35 @@ namespace RomanNumerals
         {
             string romanNumeral = "";
 
-            romanNumeral = IntegerToRomanNumeral(arabicNumber);
+            if (arabicNumber >= 4000)
+                romanNumeral = IntegerToRomanNumeralThousands(arabicNumber);
+
+            else
+                romanNumeral = IntegerToRomanNumeral(arabicNumber);
 
             return romanNumeral;
+        }
+
+
+        public string IntegerToRomanNumeralThousands(int number)
+        {
+            if (number >= 10000)
+                return "X̄" + IntegerToRomanNumeralThousands(number - 10000);
+
+            else if (number >= 9000)
+                return "ĪX̄" + IntegerToRomanNumeralThousands(number - 9000);
+
+            else if (number >= 5000)
+                return "V̄" + IntegerToRomanNumeralThousands(number - 5000);
+
+            else if (number >= 4000)
+                return "ĪV̄" + IntegerToRomanNumeralThousands(number - 4000);
+
+            else if (number >= 1000)
+                return "Ī" + IntegerToRomanNumeralThousands(number - 1000);
+
+            else
+                return IntegerToRomanNumeral(number);
         }
 
         public string IntegerToRomanNumeral(int number)
