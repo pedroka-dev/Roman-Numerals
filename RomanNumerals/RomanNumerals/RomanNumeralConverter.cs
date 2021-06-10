@@ -19,49 +19,49 @@ namespace RomanNumerals
         {
             string romanNumeral = "";
 
-            romanNumeral = integerToRomanNumeral(arabicNumber);
+            romanNumeral = IntegerToRomanNumeral(arabicNumber);
 
             return romanNumeral;
         }
 
-        public string integerToRomanNumeral(int number)
+        public string IntegerToRomanNumeral(int number)
         {
             if (number >= 1000)
             {
-                return "M";
+                return "M" + IntegerToRomanNumeral(number - 1000);
             }
 
             else if (number >= 500)
             {
-                return "D";
+                return "D" + IntegerToRomanNumeral(number - 500);
             }
 
             else if (number >= 100)
             {
-                return "C";
+                return "C" + IntegerToRomanNumeral(number - 100);
             }
 
             else if (number >= 50)
             {
-                return "L";
+                return "L" + IntegerToRomanNumeral(number - 50);
             }
 
             else if (number >= 10)
             {
-                return "X";
+                return "X" + IntegerToRomanNumeral(number - 10);
             }
 
             else if (number >= 5)
             {
-                return "V";
+                return "V" + IntegerToRomanNumeral(number - 5);
             }
             else if(number >= 1)
             {
-                return "I";
+                return "I" + IntegerToRomanNumeral(number - 1);
             }
             else
             {
-                return "I";
+                return "";
             }
         }
     }
