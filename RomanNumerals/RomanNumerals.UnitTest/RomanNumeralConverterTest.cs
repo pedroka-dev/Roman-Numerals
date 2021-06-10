@@ -219,6 +219,5 @@ namespace RomanNumerals.UnitTest
 
             Assert.AreEqual(expectedText, outputText);
         }
-
     }
 }
