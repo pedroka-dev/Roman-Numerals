@@ -320,7 +320,7 @@ namespace RomanNumerals.UnitTest
         public void Should_ReturnNumber_4010()
         {
             string inputText = "ĪV̄X";
-            int expcetedNumber = 7000;
+            int expcetedNumber = 4010;
 
             RomanToArabicNumber arabicConverter = new RomanToArabicNumber(inputText);
             int outputNumber = arabicConverter.Convert();

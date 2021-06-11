@@ -5,6 +5,10 @@ namespace RomanNumerals
 {
     public class RomanToArabicNumber
     {
+        private const string temporaryRoman1Thousands = "O";
+        private const string temporaryRoman5Thousands = "P";
+        private const string temporaryRoman10Thousands = "Q";
+
         private string RomanNumeral;
         private Dictionary<string, int> RomanArabicPairs;
 
@@ -20,9 +24,9 @@ namespace RomanNumerals
                 {"C",100},
                 {"D",500},
                 {"M",1000},
-                {"Ī",1000},
-                {"V̄",5000},
-                {"X̄",10000}
+                {temporaryRoman1Thousands,1000},
+                {temporaryRoman5Thousands,5000},
+                {temporaryRoman10Thousands,10000}
              };
         }
 
@@ -30,11 +34,15 @@ namespace RomanNumerals
         {
             var result = 0;
 
-            foreach (var letter in RomanNumeral)
+            AddTemporaryNumerals();
+
+            foreach (char letter in RomanNumeral)
             {
-                if(RomanArabicPairs.TryGetValue(letter.ToString(), out int value))
-                result += value;
+                if (RomanArabicPairs.TryGetValue(letter.ToString(), out int value))
+                    result += value;
             }
+
+            RemoveTemporaryNumerals();
 
             if (RomanNumeral.Contains("IV") || RomanNumeral.Contains("IX"))
                 result -= 2;
@@ -48,8 +56,21 @@ namespace RomanNumerals
             if (RomanNumeral.Contains("ĪV̄") || RomanNumeral.Contains("ĪX̄"))
                 result -= 2000;
 
+            return result;
+        }
 
-                return result;
+        private void RemoveTemporaryNumerals()
+        {
+            RomanNumeral = RomanNumeral.Replace(temporaryRoman1Thousands, "Ī");
+            RomanNumeral = RomanNumeral.Replace(temporaryRoman5Thousands, "V̄");
+            RomanNumeral = RomanNumeral.Replace(temporaryRoman10Thousands, "X̄");
+        }
+
+        private void AddTemporaryNumerals()
+        {
+            RomanNumeral = RomanNumeral.Replace("Ī", temporaryRoman1Thousands);
+            RomanNumeral = RomanNumeral.Replace("V̄", temporaryRoman5Thousands);
+            RomanNumeral = RomanNumeral.Replace("X̄", temporaryRoman10Thousands);
         }
     }
 }
